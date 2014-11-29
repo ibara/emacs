@@ -39,6 +39,13 @@
 (line-number-mode 1)
 (column-number-mode 1)
 
+;; Date and time
+(setq display-time-day-and-date t
+      display-time-12hr-format t
+      display-time-default-load-average nil
+      display-time-mail-file t)
+(display-time)
+
 ;; Section 2: IRC and networking
 
 ;; rcirc colored nicks
@@ -59,3 +66,13 @@
 ;; Autojoin #devious
 (setq rcirc-server-alist
       '(("irc.freenode.net" :channels ("#devious"))))
+
+;; Section 3: Other things
+
+;; Toggle fullscreen with C-M-return
+(defun toggle-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
+					   nil
+					 'fullboth)))
+(global-set-key [(control meta return)] 'toggle-fullscreen)
