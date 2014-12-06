@@ -76,3 +76,7 @@
 					   nil
 					 'fullboth)))
 (global-set-key [(control meta return)] 'toggle-fullscreen)
+
+;; Use ag for searching
+(require 'ag)
+(setq ag-highlight-search t)
