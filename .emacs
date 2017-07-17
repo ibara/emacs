@@ -77,6 +77,13 @@
 					 'fullboth)))
 (global-set-key [(control meta return)] 'toggle-fullscreen)
 
+;; Proper indentation of C code
+(setq c-default-style "bsd"
+      c-basic-offset 8)
+
+(setq-default tab-width 8
+	      indent-tabs-mode t)
+
 ;; Use ag for searching
 (require 'ag)
 (setq ag-highlight-search t)
