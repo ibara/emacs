@@ -5,12 +5,20 @@
 ;; Elisp files go in ~/.emacs.d/lisp/
 (add-to-list 'load-path "~/.emacs.d/lisp/")
 
-;; Theme
+;; Powerline
+(add-to-list 'load-path "~/.emacs.d/lisp/powerline/")
+(require 'powerline)
+
+;; Moe-theme
 (add-to-list 'custom-theme-load-path "~/.emacs.d/lisp/moe-theme.el/")
 (add-to-list 'load-path "~/.emacs.d/lisp/moe-theme.el/")
 (require 'moe-theme)
-(moe-dark)
+(powerline-moe-theme)
+(setq moe-theme-highlight-buffer-id t)
 (moe-theme-set-color 'blue)
+(moe-dark)
+
+;; Paren-mode
 (show-paren-mode t)
 (setq show-paren-style 'expression)
 
@@ -26,7 +34,7 @@
 (global-hl-line-mode 1)
 ;;(set-face-background 'hl-line "#1c1c1c")
 
-;; Background color should be black
+;; Terminal only: background color should be black
 ;;(set-background-color "black")
 ;;(set-foreground-color "white")
 
@@ -50,8 +58,11 @@
 
 ;; rcirc colored nicks
 (eval-after-load 'rcirc '(require 'rcirc-color))
-(setq rcirc-colors '("#800000" "#008000" "#800080" "#008080" "#ff00ff" "#00ffff"
-		     "#d78700" "#d7ffd7" "#6c6c6c"))
+(setq rcirc-colors '("#00cccc" "#33cccc" "#66cccc" "#99cccc" "#00ccff"
+		     "#33ccff" "#66ccff" "#99ccff" "#00ff99" "#33ff99"
+		     "#66ff99" "#99ff99" "#ccff99" "#00ffcc" "#33ffcc"
+		     "#66ffcc" "#99ffcc" "#ccffcc" "#ffffcc" "#00ffff"
+		     "#33ffff" "#66ffff" "#99ffff" "#ccffff"))
 
 ;; Activity/PM notifications
 (add-hook 'rcirc-mode-hook
