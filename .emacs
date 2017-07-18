@@ -1,6 +1,8 @@
 ;; This file is in the public domain.
 
+;;
 ;; Section 1: basic emacs setup stuff
+;;
 
 ;; Elisp files go in ~/.emacs.d/lisp/
 (add-to-list 'load-path "~/.emacs.d/lisp/")
@@ -43,7 +45,7 @@
 (menu-bar-mode -1)
 (scroll-bar-mode -1)
 
-;; Show line and column number in mode line
+;; Show line and column number in powerline
 (line-number-mode 1)
 (column-number-mode 1)
 
@@ -54,7 +56,17 @@
       display-time-mail-file t)
 (display-time)
 
+;; Toggle fullscreen with C-M-return
+(defun toggle-fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
+					   nil
+					 'fullboth)))
+(global-set-key [(control meta return)] 'toggle-fullscreen)
+
+;;
 ;; Section 2: IRC and networking
+;;
 
 ;; rcirc colored nicks
 (eval-after-load 'rcirc '(require 'rcirc-color))
@@ -78,15 +90,9 @@
 (setq rcirc-server-alist
       '(("irc.freenode.net" :channels ("#devious"))))
 
-;; Section 3: Other things
-
-;; Toggle fullscreen with C-M-return
-(defun toggle-fullscreen ()
-  (interactive)
-  (set-frame-parameter nil 'fullscreen (if (frame-parameter nil 'fullscreen)
-					   nil
-					 'fullboth)))
-(global-set-key [(control meta return)] 'toggle-fullscreen)
+;;
+;; Section 3: Code writing
+;;
 
 ;; Proper indentation of C code
 (setq c-default-style "bsd"
@@ -98,3 +104,18 @@
 ;; Use ag for searching
 (require 'ag)
 (setq ag-highlight-search t)
+
+;;
+;; Section 4: Version control
+;;
+
+;; CVS
+(require 'pcvs)
+
+;; Mercurial
+(require 'mercurial)
+
+;; git
+(add-to-list 'load-path ".../git/contrib/emacs")
+(require 'git)
+(require 'git-blame)
