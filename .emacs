@@ -34,11 +34,11 @@
 
 ;; Highlight current line
 (global-hl-line-mode 1)
-;;(set-face-background 'hl-line "#1c1c1c")
 
 ;; Terminal only: background color should be black
 ;;(set-background-color "black")
 ;;(set-foreground-color "white")
+;;(set-face-background 'hl-line "#1c1c1c")
 
 ;; Get rid of distractions
 (tool-bar-mode -1)
@@ -101,6 +101,12 @@
 (setq-default tab-width 8
 	      indent-tabs-mode t)
 
+;; Enable Gravity syntax highlighting
+(require 'gravity-mode)
+
+;; K
+(require 'k-mode)
+
 ;; Use ag for searching
 (require 'ag)
 (setq ag-highlight-search t)
@@ -119,3 +125,11 @@
 (add-to-list 'load-path ".../git/contrib/emacs")
 (require 'git)
 (require 'git-blame)
+
+;;
+;; Section 5: MELPA
+;;
+
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
