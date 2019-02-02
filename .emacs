@@ -107,6 +107,11 @@
 ;; K
 (require 'k-mode)
 
+;; Go
+(add-to-list 'load-path "~/.emacs.d/lisp/go-mode.el/")
+(autoload 'go-mode "go-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
+
 ;; Use ag for searching
 (require 'ag)
 (setq ag-highlight-search t)
@@ -120,11 +125,6 @@
 
 ;; Mercurial
 (require 'mercurial)
-
-;; git
-(add-to-list 'load-path ".../git/contrib/emacs")
-(require 'git)
-(require 'git-blame)
 
 ;;
 ;; Section 5: MELPA
